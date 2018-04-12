@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>飘动</title>
+</head>
+<script src="http://www.jq22.com/chm/jquery/js/jquery.min.js"></script>
+<body>
+	<style>
+		.box { width: 200px; height: 200px; background: #000; position: fixed;}
+	</style>
+	<div class="box"></div>
+	<script>
+		//产生随机数
+        function RandomNum(Min, Max) {
+			var Range = Max - Min;
+			var Rand = Math.random();
+			var num = Min + Math.floor(Rand * Range); //舍去
+			return num;
+		}
+		//用window的宽高减去元素的宽高得到可移动区域大小，最后随机到区域内的某位置
+        window.setInterval(function () {       	
+        	var w = $(window).width(),
+        		h = $(window).height(),
+        		box = $(".box"),
+        		box_w = box.width(),
+        		box_h = box.height();
+
+        	var ran1 =  RandomNum(0, w - box_w);
+        	var ran2 =  RandomNum(0, h - box_h);
+
+        	box.animate({
+	            left: ran1,
+	            top:  ran2
+	        }, 2000);
+
+        }, 3000);
+
+
+
+        // $(".box").animate({
+        //     left: $(window).width()/2*(1+s[i1]),
+        //     top:  $(window).height()/2*(1+s[i1])
+        // }, 2000);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		// var wordList = [ 
+		// 	['热烈', '万分', '非常'], 
+		// 	['欢迎', '感谢', '谢谢'], 
+		// 	['您', '亲', '老板', '大神'], 
+		// 	['光临', '惠顾', '支持'], 
+		// 	['小店', '本店', '菜馆']
+		// ];
+
+		// // for(var i = 1; i <= 9; i++){
+		// // 	for(var j = 1; j <= i; j++){
+		// // 		document.write(i + " * " + j + " = " + (i*j) + "<br>");
+		// // 	}
+		// // }
+		// var arr = [];
+		// for(var i = 0; i < wordList.length; i++){
+		// 	console.log(wordList[i] + "----"); //=>列出数组
+		// 	function fn (obj) {
+
+		// 		for(var obj = 0; obj < wordList[i].length; obj++){
+		// 			arr.push(wordList[obj][i] + '====');
+
+		// 			//return;
+		// 			//console.log(wordList[i][0]);
+					
+		// 			//console.log(wordList[i][0]);
+		// 			//console.log(wordList[i][0]);
+		// 			// for(var n = 0; n < j; n++){
+		// 			// 	console.log(wordList[j][i][n])
+		// 			// }
+		// 			//console.log(wordList[i][i]); //=>列出所有数据
+		// 			//document.write(wordList[j][i] + "------" + "<br>");
+		// 			//document.write(wordList[i] + "<br>");
+		// 		}
+
+		// 	}
+		// 	new fn(i);
+			
+
+		// 	//for(var j = 0; j < i; j++){
+		// 		//console.log(wordList[i] + wordList[j]); //=>列出所有数据
+		// 		//document.write(wordList[j][i] + "------" + "<br>");
+		// 		//document.write(wordList[i] + "<br>");
+		// 	//}
+
+		// 	//for(var j = 0; j < i; j++){
+		// 		//console.log(wordList[i] + wordList[j]); //=>列出所有数据
+		// 		//document.write(wordList[j][i] + "------" + "<br>");
+		// 		//document.write(wordList[i] + "<br>");
+		// 	//}
+		// }
+		//console.log(arr);
+	</script>
+</body>
+</html>
