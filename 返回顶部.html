@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>返回顶部</title>
+</head>
+<style>
+.back_top {
+    text-decoration: none;
+    width: 4em;
+    height: 4em;
+    line-height: 4em;
+    font-size: 12px;
+    font-weight: bold;
+    display: inline-block;
+    position: fixed;
+    z-index: 200;
+    bottom: 5%;
+    right: 2%;
+    background: #dddec2;
+    text-align: center;
+    color: #696b53;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -moz-transition: all 0.26s ease-out 0s;
+    -webkit-transition: all 0.26s ease-out 0s;
+    opacity: .75;
+}
+
+.back_top:hover {
+    background: #c8c9a7;
+    color: #f2f5cd;
+}
+</style>
+<script src="http://www.w3school.com.cn/jquery/jquery-1.11.1.min.js"></script>
+
+<body style="height: 1500px;">
+    <a href="javascript:void(0)" class="back_top" style="display: block;">Top</a>
+</body>
+<script>
+//返回顶部
+$(window).scroll(function() {
+    if ($(document).scrollTop() + $(window).height() >= $(document).height()) {
+        //if($(document).scrollTop() >= $(window).height()){
+        $('.back_top').fadeIn();
+    } else {
+        $('.back_top').fadeOut();
+    }
+});
+
+$('.back_top').on('click', function() {
+    $('body,html').animate({ scrollTop: 0 }, 400);
+});
+</script>
+
+</html>

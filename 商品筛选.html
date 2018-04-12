@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>商品筛选</title>
+</head>
+<script src="http://www.w3school.com.cn/jquery/jquery-1.11.1.min.js"></script>
+<style>
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.groups a {
+    color: #575757;
+}
+
+.groups ul {
+    padding: 0 15px;
+    border: 1px solid #DDD;
+}
+
+.groups ul li {
+    border-bottom: 1px dashed #DCDCDC;
+    padding: 8px 0;
+    font-size: 14px;
+    /* font-weight: bold; */
+}
+
+.groups ul li:last-child {
+    border: none;
+}
+
+.groups ul li h3 {
+    margin-top: 0;
+    color: #575757;
+}
+
+.groups ul li a {
+    margin: 0 10px;
+}
+
+.groups .active {
+    color: red;
+}
+
+.groups ul li:first-child a {
+    margin: 0 3px;
+}
+
+.groups .active {
+    font-weight: bold;
+}
+
+.mallhot-tag {
+    background: #F4DABD;
+    display: inline-block;
+    padding: 2px 10px;
+}
+
+.mallhot-tag .delete {
+    font-style: normal;
+}
+
+.reset {
+    float: right;
+}
+</style>
+
+<body>
+    <div class="groups">
+        <ul>
+            <li class="checked" id="conditions">己选条件
+                <span class="reset pull-right red">清空</span>
+            </li>
+            <li> 价 格
+                <a href="javascript:void(0);">1000以下</a>
+                <a href="javascript:void(0);">1000-3000</a>
+                <a href="javascript:void(0);">5000-8000</a>
+                <a href="javascript:void(0);">8000-12000</a>
+                <a href="javascript:void(0);">12000-18000</a>
+                <a href="javascript:void(0);">18000-22000</a>
+                <a href="javascript:void(0);">22000-30000</a>
+                <a href="javascript:void(0);">30000以上</a>
+            </li>
+            <li>主石筛选
+                <a href="javascript:void(0);">0.2CT以下</a>
+                <a href="javascript:void(0);"> 0.2-0.3CT</a>
+                <a href="javascript:void(0);">0.3-0.49CT</a>
+                <a href="javascript:void(0);">0.5-0.89CT</a>
+                <a href="javascript:void(0);">0.9-1.49CT </a>
+                <a href="javascript:void(0);">1.5-1.99CT</a>
+                <a href="javascript:void(0);">2-2.99CT</a>
+                <a href="javascript:void(0);">3-3.99CT</a>
+                <a href="javascript:void(0);">4CT以上</a>
+            </li>
+            <li>
+                镶口类型
+                <a href="javascript:void(0);">四爪镶</a>
+                <a href="javascript:void(0);">五爪镶</a>
+                <a href="javascript:void(0);">六爪镶</a>
+                <a href="javascript:void(0);">八爪镶</a>
+                <a href="javascript:void(0);">六围一</a>
+                <a href="javascript:void(0);">八围一</a>
+                <a href="javascript:void(0);">车花片</a>
+                <a href="javascript:void(0);">天使之吻</a>
+                <a href="javascript:void(0);">未镶嵌</a>
+            </li>
+            <li>适用人群
+                <a href="javascript:void(0);">男性</a>
+                <a href="javascript:void(0);">女性</a>
+                <a href="javascript:void(0);">中性</a>
+                <a href="javascript:void(0);">儿童</a>
+            </li>
+        </ul>
+    </div>
+</body>
+<script>
+/* 条件筛选 */
+$('.groups ul li').each(function() {
+    if ($(this).hasClass('checked') == false) {
+        $(this).find('a').bind('click', function() {
+            if ($(this).attr('data') == "0" || $(this).attr('data') == undefined) { //判断是否己选择条件
+                $(this).attr('data', "1"); //添加选中状态
+                $(this).addClass('active');
+                var text = $(this).text();
+                $('#conditions').append('<a href="javascript:;"><span class="mallhot-tag" data="' + text + '">' + text + '<i class="delete"> x</i></span></a>');
+            }
+        });
+    }
+});
+
+/* 删除己选条件 */
+$(document).delegate('.mallhot-tag', 'click', function() {
+
+    ThisText = $(this).attr('data');
+    $('.groups ul li a').each(function() {
+        if ($(this).html() == ThisText) {
+            $(this).attr('data', '0');
+            $(this).removeClass('active');
+        }
+    });
+    $(this).parents("a").remove();
+});
+
+//清空
+$(".groups .reset").click(function() {
+    $(".checked a").remove();
+    $(".groups a").removeClass("active").attr('data', '0');
+
+});
+</script>
+
+</html>

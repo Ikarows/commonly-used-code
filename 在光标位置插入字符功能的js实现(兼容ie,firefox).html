@@ -1,0 +1,43 @@
+<!DOCTYPE>
+<head>
+    <meta http-equiv="Content-Language" content="zh-cn" />
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title>在光标处插入文字</title>
+</head>
+
+<body>
+    <form method="get">
+        <div>
+            <textarea id="content" cols="50" rows="5">先在本文框中点鼠标以确定光标位置。</textarea>
+        </div>
+        <div>
+            <input type="button" value="插入文字" A "" onclick="javascript:Insert('A');" />
+        </div>
+        <div>
+            <input type="button" value="插入文字" B "" onclick="javascript:Insert('B');" />
+        </div>
+    </form>
+    <script type="text/javascript" language="javascript">
+    <!-- 
+
+    function Insert(str) {
+        var obj = document.getElementById('content');
+        if (document.selection) {
+            obj.focus();
+            var sel = document.selection.createRange();
+            document.selection.empty();
+            sel.text = str;
+        } else {
+            var prefix, main, suffix;
+            prefix = obj.value.substring(0, obj.selectionStart);
+            main = obj.value.substring(obj.selectionStart, obj.selectionEnd);
+            suffix = obj.value.substring(obj.selectionEnd);
+            obj.value = prefix + str + suffix;
+        }
+        obj.focus();
+    }
+    -->
+    </script>
+</body>
+
+</html>
